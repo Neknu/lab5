@@ -38,6 +38,19 @@ int[] treeNum;
   
 void setup() {
   size(640, 360);
+  print("This is hint of program working:\n");
+  print("LeftClick to add vertex\n");
+  print("Two LeftClicks to add edge\n");
+  print("To visualize algorithms, select, at first, number(at keyboard):\n");
+  print("1. - is the graph connected?\n");
+  print("2. - BFS\n");
+  print("3. - Dijkstra\n");
+  print("4. - Topological Sort\n");
+  print("5. - Bone Tree\n");
+  print("6. - Kruskal\n");
+  print("And to start visualisation RIGHTclick at vertex\n");
+  print("Press Enter - for demo graph\n");
+  print("Press CENTER mousebutton - for starting benchmark(also select algorithm with keyboard number)\n");
 }
 
 
@@ -531,24 +544,29 @@ void benchmark() {
   int t1 = millis();
   createRandomGraph_benchmark(MAX);
   if(key == '1' || key == '2'){
+    print("BFS BENCHMARK\n");
     BFS(1);
   }
   if(key == '3'){
+    print("Dijkstra BENCHMARK\n");
     Djkstra(5);
   }
   if(key == '4'){
-    createRandomGraph_benchmark(MAX / 10);
+    print("TopologicalSort BENCHMARK\n");
+    createRandomGraph_benchmark(MAX / 10); // because recursive algorithm
     g.topologicalSort();
   }
   if(key == '5'){
+    print("BoneTree BENCHMARK\n");
     boneTree(1);
   }
   if(key == '6'){
+    print("Kruskal BENCHMARK\n");
     Kruskal();
   }
   int t2 = millis();
   int res_time = t2-t1;
   print("it took me ", res_time," millisec", "\n");
-  createRandomGraph(5);
+  createRandomGraph(5); // just to continue program with random graph
   loop();
 }
